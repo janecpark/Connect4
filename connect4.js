@@ -9,7 +9,7 @@ let WIDTH = 7;
 let HEIGHT = 6;
 
 let currPlayer = 1; // active player: 1 or 2
-let board = []; // array of rows, each row is array of cells  (board[y][x])
+const board = []; // array of rows, each row is array of cells  (board[y][x])
 const reset = document.querySelector('button')
 const msg = document.querySelector('#msg')
 /** makeBoard: create in-JS board structure:
@@ -78,20 +78,17 @@ function placeInTable(y, x) {
   piece.classList.add('piece')
   piece.classList.add(`p${currPlayer}`)
   piece.classList.add('slide-bottom')
+  piece.style.right = '.5px';
   const spot = document.getElementById(`${y}-${x}`)
-
   spot.append(piece);
-
 }
 
 /** endGame: announce game end */
-
 function endGame(message) {
    msg.innerText = message
 }
 
 /** handleClick: handle click of column top to play piece */
-
 function handleClick(evt) {
   // get x from ID of clicked cell
   const x = +evt.target.id;
@@ -117,22 +114,18 @@ function handleClick(evt) {
   }
 
   // check for tie
-  // TODO: check if all cells in board are filled; if so call, call endGame
   if(isEveryCellFilled()){
     return endGame(`It's a tie`)
   }
   // switch players
-  // TODO: switch currPlayer 1 <-> 2
   currPlayer = currPlayer === 1 ? 2 : 1
-
 }
 
 function isEveryCellFilled(){
    const newArray = board.flat()
-    return newArray.every(function(el){
-      return el!== null;
-    })
+    return newArray.every(el => el!== null)
 }
+
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
 
 function checkForWin() {
@@ -150,8 +143,6 @@ function checkForWin() {
         board[y][x] === currPlayer
     );
   }
-
- 
 
   // TODO: read and understand this code. Add comments to help you.
 

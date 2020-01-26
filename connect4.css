@@ -2,6 +2,7 @@
 *{
   box-sizing: border-box;
 }
+
 #board td {
   width: 50px;
   height: 50px;
@@ -20,7 +21,7 @@ td{
 #game{
   display: grid;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 30px;
  
 }
 
@@ -48,8 +49,6 @@ body{
   position: absolute;
 
 }
-
-
 
 button{
   color: #4187C9;
