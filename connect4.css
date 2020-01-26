@@ -1,0 +1,110 @@
+/* game board table */
+*{
+  box-sizing: border-box;
+}
+#board td {
+  width: 50px;
+  height: 50px;
+  position: relative; 
+}
+
+#board{
+  background-color:#4187C9 ;
+}
+
+td{
+  background-color:white;
+  border-radius:50%;
+}
+
+#game{
+  display: grid;
+  justify-content: center;
+  margin-top: 50px;
+ 
+}
+
+body{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  
+}
+
+#header{
+  text-align: center;
+}
+
+
+#msg{
+  display:inline-block
+}
+
+
+/* pieces are div within game table cells: draw as colored circles */
+
+.piece {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+
+}
+
+
+
+button{
+  color: #4187C9;
+  border: 1px #4187C9 solid;
+  border-radius: 15%;
+  height:25px;
+  outline:none;
+  
+}
+
+button:hover{
+  background-color: #4187C9;
+  color:white;
+}
+.slide-bottom {
+	-webkit-animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.p1{
+  background:red;
+}
+
+.p2{
+  background:blue;
+}
+
+/* column-top is table row of clickable areas for each column */
+
+#column-top td {
+  background-color: lightgray;
+}
+
+#column-top td:hover {
+  background-color: gold;
+}
+
+ @-webkit-keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(-250px);
+            transform: translateY(-250px);
+  }
+  100% {
+    -webkit-transform: translateY(-25px);
+            transform: translateY(-25px);
+  }
+}
+@keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(-250px);
+            transform: translateY(-250px);
+  }
+  100% {
+    -webkit-transform: translateY(-25px);
+            transform: translateY(-25px);
+  }
+}
+
