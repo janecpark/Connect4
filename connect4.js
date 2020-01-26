@@ -27,6 +27,7 @@ function makeBoard() {
       board[y][x] = null;
     }
   }
+  
 }
 
 /** makeHtmlBoard: make HTML table and row of column tops. */
@@ -92,25 +93,22 @@ function endGame(message) {
 function handleClick(evt) {
   // get x from ID of clicked cell
   const x = +evt.target.id;
-  console.log(`X: ${x}`)
+  // console.log(`X: ${x}`)
 
   // get next spot in column (if none, ignore click)
   const y = findSpotForCol(x);
   if (y === null) {
     return;
   }
-  console.log(`Y: ${y}`)
+  // console.log(`Y: ${y}`)
 
   // place piece in board and add to HTML table
   board[y][x] = currPlayer;
   placeInTable(y, x);
 
-
   // check for win
   if (checkForWin()) {
-    setTimeout(() => {
       return endGame(`Player ${currPlayer} won!`);
-    }, 300);
   }
 
   // check for tie
@@ -119,6 +117,7 @@ function handleClick(evt) {
   }
   // switch players
   currPlayer = currPlayer === 1 ? 2 : 1
+  console.log(currPlayer)
 }
 
 function isEveryCellFilled(){
@@ -167,7 +166,8 @@ function checkForWin() {
 
   reset.addEventListener('click', function(){
     document.querySelectorAll('.pieces').forEach(el=> el.parentNode.removeChild(el));
-  
+    msg.innerText = ''
+    currPlayer = 1;
     for(let y = 0; y < HEIGHT; y++){
       for(let x = 0; x < WIDTH; x++){
         board[y][x] = null;
