@@ -12,6 +12,8 @@ let currPlayer = 1; // active player: 1 or 2
 const board = []; // array of rows, each row is array of cells  (board[y][x])
 const reset = document.querySelector('button')
 const msg = document.querySelector('#msg')
+let isGameOver = false;
+
 /** makeBoard: create in-JS board structure:
  *    board = array of rows, each row is array of cells  (board[y][x])
  */
@@ -91,6 +93,9 @@ function endGame(message) {
 
 /** handleClick: handle click of column top to play piece */
 function handleClick(evt) {
+  if(isGameOver){
+    return;
+  }
   // get x from ID of clicked cell
   const x = +evt.target.id;
   // console.log(`X: ${x}`)
@@ -108,6 +113,8 @@ function handleClick(evt) {
 
   // check for win
   if (checkForWin()) {
+    isGameOver = true;
+
       return endGame(`Player ${currPlayer} won!`);
   }
 
@@ -117,7 +124,6 @@ function handleClick(evt) {
   }
   // switch players
   currPlayer = currPlayer === 1 ? 2 : 1
-  console.log(currPlayer)
 }
 
 function isEveryCellFilled(){
@@ -165,6 +171,7 @@ function checkForWin() {
 }
 
   reset.addEventListener('click', function(){
+    isGameOver = false; 
     document.querySelectorAll('.pieces').forEach(el=> el.parentNode.removeChild(el));
     msg.innerText = ''
     currPlayer = 1;
